@@ -25,3 +25,21 @@
 		font-family: Akzidenz, sistem-ui, sans-serif;
 	}
 }
+
+@layer components {
+	#app {
+		@apply h-screen flex flex-col justify-center items-center dark:text-white dark:bg-zinc-800
+	}
+	.startBtn {
+		@apply bg-slate-200 hover:bg-slate-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 rounded-md font-medium px-5 py-2
+	}
+	.logo {
+		@apply text-2xl sm:text-4xl md:text-5xl font-bold
+	}
+	.placeholders-wrapper {
+		@apply flex flex-row
+	}
+	.word-placeholder {
+		@apply mx-2 text-4xl
+	}
+}
