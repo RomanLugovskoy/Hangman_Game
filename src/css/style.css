@@ -30,7 +30,7 @@
 	#app {
 		@apply h-screen flex flex-col justify-center items-center dark:text-white dark:bg-zinc-800
 	}
-	.startBtn {
+	.primary-btn {
 		@apply bg-slate-200 hover:bg-slate-300 dark:bg-indigo-600 dark:hover:bg-indigo-700 rounded-md font-medium px-5 py-2
 	}
 	.logo {
@@ -41,5 +41,11 @@
 	}
 	.word-placeholder {
 		@apply mx-2 text-4xl
+	}
+	.keyboard {
+		@apply max-w-2xl flex flex-wrap mt-10 justify-center items-center
+	}
+	.keyboard-btn {
+		@apply w-10 h-10 sm:w-14 sm:h-14 m-1 sm:m-2
 	}
 }
