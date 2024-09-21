@@ -23,6 +23,8 @@
   </head>
   <body>
     <div id="app" class="px-3">
+
+
 		<div class="absolute top-5 right-5">
 			<label class="inline-flex items-center cursor-pointer">
 				<input id="toggleDarkMode" type="checkbox" value="" class="sr-only peer">
@@ -30,11 +32,17 @@
 				<span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Dark mode</span>
 			  </label>
 		</div>
+
+		<div class="absolute left-5 top-5">
+			<button class="language-switcher" id="languageSwitcher"><img src="images/uk.svg" alt="english language"></button>
+		</div>
+
 		<h1 id="logo" class="logo">[ HANGMAN GAME ]</h1>
 		<div id="game" class="mt-10 flex flex-col items-center">
 			<button id="startGame" class="primary-btn">Start game</button>
 		</div>
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
     <script type="module" src="./src/js/main.js"></script>
   </body>
 </html>

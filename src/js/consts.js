@@ -90,4 +90,41 @@ export const WORDS = [
   "xenon",
   "yonder",
 ];
-export const KEYBOARD_LETTERS = Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+
+export const LANGUAGES = {
+	en: {
+		src: "images/uk.svg",
+		start: "Start game",
+		logo: "[ HANGMAN GAME ]",
+		confirm: "Are you sure you want to quit and lose your progress",
+		tries: "TRIES LEFT: ",
+		quit: "Quit",
+		alphabet: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+		mode: "Dark mode",
+		again: "Play again",
+	},
+	ru: {
+		src: "images/ru.svg",
+		start: "Начать игру",
+		logo: "[ ВИСЕЛИЦА ]",
+		confirm: "Вы уверены, что хотите закончить игру и потерять прогресс?",
+		tries: "ОСТАЛОСЬ ПОПЫТОК: ",
+		quit: "Выйти",
+		alphabet: "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ",
+		mode: "Тёмная тема",
+		again: "Играть снова",
+	},
+	it: {
+		src: "images/it.svg",
+		start: "Avvia il gioco",
+		logo: "[ GIOCO DELL'IMPICCATO ]",
+		confirm: "Sei sicuro di voler uscire e perdere i tuoi progressi?",
+		tries: "TENTATIVI RIMASTI: ",
+		quit: "Esci",
+		alphabet: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+		mode: "Modalità scura",
+		again: "Gioca di nuovo",
+	},
+}
+
+export const KEYBOARD_LETTERS = Array.from(LANGUAGES.ru.alphabet);

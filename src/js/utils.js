@@ -1,3 +1,5 @@
+import { LANGUAGES } from "./consts";
+
 export const darkModeHandle = () => {
   const darkModeSwitcher = document.getElementById("toggleDarkMode");
   const htmlElement = document.documentElement;
@@ -17,3 +19,7 @@ export const darkModeHandle = () => {
     }
   });
 };
+
+// export const languageHandle = () => {
+// 	const languageSwitcher = 
+// }
