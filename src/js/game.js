@@ -48,11 +48,11 @@ const checkLetter = (letter) => {
     const wordArr = Array.from(word);
     wordArr.forEach((currentLetter, i) => {
       if (currentLetter === inputLetter) {
-		winCounter += 1;
-		if (winCounter === word.length) {
-			stopGame('win')
-			return
-		}
+        winCounter += 1;
+        if (winCounter === word.length) {
+          stopGame("win");
+          return;
+        }
         document.getElementById(`letter_${i}`).innerText =
           inputLetter.toUpperCase();
       }
@@ -63,9 +63,9 @@ const checkLetter = (letter) => {
     triesCounter.innerText = triesLeft;
     const image = document.getElementById("hangmanImg");
     image.src = `/images/hg-${10 - triesLeft}.png`;
-	if (triesLeft === 0) {
-		stopGame('lose');
-	}
+    if (triesLeft === 0) {
+      stopGame("lose");
+    }
   }
 };
 
@@ -73,7 +73,7 @@ const stopGame = (status) => {
   document.getElementById("placeholders").remove();
   document.getElementById("tries-p").remove();
   document.getElementById("keyboard").remove();
-  document.getElementById('quit').remove()
+  document.getElementById("quit").remove();
 
   const word = sessionStorage.getItem("word");
 
@@ -82,20 +82,18 @@ const stopGame = (status) => {
 
     document.getElementById("game").innerHTML +=
       `<h2 class="result-text win">You won</h2>`;
-
   } else if (status === "lose") {
     document.getElementById("game").innerHTML +=
       `<h2 class="result-text lose">You lost</h2>`;
-
   } else if (status === "quit") {
-	logoElem.classList.remove('logo-sm')
-	document.getElementById('hangmanImg').remove()
+    logoElem.classList.remove("logo-sm");
+    document.getElementById("hangmanImg").remove();
   }
-  
+
   document.getElementById("game").innerHTML +=
     `<p class="result-word-p">The word was <span class="word">${word}</span></p><button class="primary-btn px-5 py-2 mt-8" id="play-again">Play again</button>`;
-	
-	document.getElementById('play-again').onclick = startGame;
+
+  document.getElementById("play-again").onclick = startGame;
 };
 
 export const startGame = () => {
@@ -121,11 +119,16 @@ export const startGame = () => {
   const hangmanImg = createHangmanImg();
   gameDiv.prepend(hangmanImg);
 
-  gameDiv.insertAdjacentHTML('beforeend', '<button class="quit-btn" id="quit">Quit</button>')
-  document.getElementById('quit').onclick = () => {
-	const isSure = confirm('Are you sure you want to quit and lose your progress')
-	if (isSure) {
-		stopGame('quit')
-	}
-  }
+  gameDiv.insertAdjacentHTML(
+    "beforeend",
+    '<button class="quit-btn" id="quit">Quit</button>'
+  );
+  document.getElementById("quit").onclick = () => {
+    const isSure = confirm(
+      "Are you sure you want to quit and lose your progress"
+    );
+    if (isSure) {
+      stopGame("quit");
+    }
+  };
 };
