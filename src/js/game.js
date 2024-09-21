@@ -10,7 +10,7 @@ const createHangmanImg = () => {
   const image = document.createElement("img");
   image.alt = "hangman image";
   image.id = "hangmanImg";
-  image.src = "/images/hg-0.png";
+  image.src = "images/hg-0.png";
   image.classList.add("hangman-img");
   return image;
 };
@@ -62,7 +62,7 @@ const checkLetter = (letter) => {
     triesLeft -= 1;
     triesCounter.innerText = triesLeft;
     const image = document.getElementById("hangmanImg");
-    image.src = `/images/hg-${10 - triesLeft}.png`;
+    image.src = `images/hg-${10 - triesLeft}.png`;
     if (triesLeft === 0) {
       stopGame("lose");
     }
