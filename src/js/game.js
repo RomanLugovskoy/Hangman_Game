@@ -1,5 +1,9 @@
 import { WORDS } from "./consts";
 import { KEYBOARD_LETTERS } from "./consts";
+import { LANGUAGES } from "./consts";
+import { normalizeWord } from "./utils";
+
+let currentLanguage = localStorage.getItem("language");
 
 const gameDiv = document.getElementById("game");
 const logoElem = document.getElementById("logo");
@@ -31,7 +35,7 @@ const createKeyboard = () => {
   keyboard.classList.add("keyboard");
   keyboard.id = "keyboard";
 
-  const keyboardHTML = KEYBOARD_LETTERS.reduce((acc, curr, i) => {
+  const keyboardHTML = KEYBOARD_LETTERS().reduce((acc, curr, i) => {
     return (
       acc +
       `<button class="primary-btn keyboard-btn" id="${curr}">${curr}</button>`
@@ -42,7 +46,7 @@ const createKeyboard = () => {
 };
 
 const checkLetter = (letter) => {
-  const word = sessionStorage.getItem("word");
+  const word = normalizeWord(sessionStorage.getItem("word"));
   const inputLetter = letter.toLowerCase();
   if (word.includes(inputLetter)) {
     const wordArr = Array.from(word);
@@ -81,17 +85,17 @@ const stopGame = (status) => {
     document.getElementById("hangmanImg").src = "images/hg-win.png";
 
     document.getElementById("game").innerHTML +=
-      `<h2 class="result-text win">You won</h2>`;
+      `<h2 class="result-text win">${LANGUAGES[currentLanguage].win}</h2>`;
   } else if (status === "lose") {
     document.getElementById("game").innerHTML +=
-      `<h2 class="result-text lose">You lost</h2>`;
+      `<h2 class="result-text lose">${LANGUAGES[currentLanguage].lose}</h2>`;
   } else if (status === "quit") {
     logoElem.classList.remove("logo-sm");
     document.getElementById("hangmanImg").remove();
   }
 
   document.getElementById("game").innerHTML +=
-    `<p class="result-word-p">The word was <span class="word">${word}</span></p><button class="primary-btn px-5 py-2 mt-8" id="play-again">Play again</button>`;
+    `<p class="result-word-p">${LANGUAGES[currentLanguage].was} <span class="word">${word}</span></p><button class="primary-btn px-5 py-2 mt-8" id="play-again">${LANGUAGES[currentLanguage].again}</button>`;
 
   document.getElementById("play-again").onclick = startGame;
 };
@@ -100,13 +104,13 @@ export const startGame = () => {
   triesLeft = 10;
   winCounter = 0;
   logoElem.classList.add("logo-sm");
-  const randomIndex = Math.floor(Math.random() * WORDS.length);
-  const word = WORDS[randomIndex];
+  const randomIndex = Math.floor(Math.random() * WORDS().length);
+  const word = WORDS()[randomIndex];
   sessionStorage.setItem("word", word);
 
   gameDiv.innerHTML = createPlaceholders();
 
-  gameDiv.innerHTML += `<p id="tries-p" class="tries-left font-medium mt-8">TRIES LEFT: <span class="text-red-600 font-medium" id="tries-counter">10</span></p>`;
+  gameDiv.innerHTML += `<p id="tries-p" class="tries-left font-medium mt-8">${LANGUAGES[currentLanguage].tries}<span class="text-red-600 font-medium" id="tries-counter">10</span></p>`;
 
   const keyboardDiv = createKeyboard();
   keyboardDiv.addEventListener("click", (e) => {
@@ -121,12 +125,10 @@ export const startGame = () => {
 
   gameDiv.insertAdjacentHTML(
     "beforeend",
-    '<button class="quit-btn" id="quit">Quit</button>'
+    `<button class="quit-btn" id="quit">${LANGUAGES[currentLanguage].quit}</button>`
   );
   document.getElementById("quit").onclick = () => {
-    const isSure = confirm(
-      "Are you sure you want to quit and lose your progress"
-    );
+    const isSure = confirm(LANGUAGES[currentLanguage].confirm);
     if (isSure) {
       stopGame("quit");
     }
