@@ -327,7 +327,7 @@ export const LANGUAGES = {
   it: {
     src: "images/it.svg",
     start: "Avvia il gioco",
-    logo: "[ GIOCO DELL'IMPICCATO ]",
+    logo: "GIOCO DELL'IMPICCATO",
     confirm: "Sei sicuro di voler uscire e perdere i tuoi progressi?",
     tries: "TENTATIVI RIMASTI: ",
     quit: "Esci",
