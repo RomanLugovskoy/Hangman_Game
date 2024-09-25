@@ -47,7 +47,7 @@
     @apply flex justify-center items-center bg-slate-200 enabled:hover:bg-slate-300 dark:btn-darkCol dark:enabled:hover:bg-sky-950 rounded-md font-medium px-5 py-2 disabled:opacity-20 disabled:cursor-not-allowed;
   }
   .logo {
-    @apply text-2xl sm:text-4xl md:text-5xl font-bold;
+    @apply text-2xl sm:text-4xl md:text-5xl font-bold text-center;
   }
   .logo-sm {
     @apply text-xl;
